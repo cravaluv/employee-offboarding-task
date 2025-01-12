@@ -15,7 +15,16 @@ export class OffboardingService {
 
   fetchEmployees(): void {
     this.http.get<Employee[]>('/api/employees')
-      .subscribe(employees => this.employeesSubject.next(employees));
+      .pipe(
+        tap(employees => {
+          console.log('Fetched employees:', employees); // Log the fetched employees
+          this.employeesSubject.next(employees);
+        })
+      )
+      .subscribe({
+        next: () => console.log('Employees updated successfully'),
+        error: (err) => console.error('Error fetching employees:', err)
+      });
   }
 
   fetchEmployeeDetails(id: number): Observable<Employee> {

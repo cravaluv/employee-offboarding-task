@@ -4,7 +4,7 @@ export interface Employee {
   department: string;
   email: string;
   status: EmployeeStatus;
-  equipment: Equipment[];
+  equipments: Equipment[];
 }
 
 export enum EmployeeStatus {

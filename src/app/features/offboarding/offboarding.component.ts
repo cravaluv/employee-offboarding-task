@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-offboarding',
-  imports: [RouterModule],
+  imports: [RouterModule, MatTabsModule],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss'
 })
