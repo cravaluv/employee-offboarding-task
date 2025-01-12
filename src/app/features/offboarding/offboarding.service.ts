@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import {Employee} from './offboarding.model';
+import {Injectable} from '@angular/core';
+import {Employee, EmployeeStatus} from './offboarding.model';
 import {BehaviorSubject, Observable, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OffboardingService {
 
@@ -22,14 +22,14 @@ export class OffboardingService {
     return this.http.get<Employee>(`/api/employees/${id}`);
   }
 
-  updateEmployeeState(id: number, state: string): Observable<Employee> {
-    return this.http.put<Employee>(`/api/employees/${id}/state`, { state })
+  offboardEmployee(id: number, body: any): Observable<Employee> {
+    return this.http.post<Employee>(`/api/employees/${id}/offboard`, body)
       .pipe(
-        tap(updatedEmployee => {
+        tap(() => {
           const employees = this.employeesSubject.getValue();
           const index = employees.findIndex(emp => emp.id === id);
           if (index !== -1) {
-            employees[index] = updatedEmployee;
+            employees[index].status = EmployeeStatus.Offboarded;
             this.employeesSubject.next([...employees]);
           }
         })
