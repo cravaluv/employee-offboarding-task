@@ -11,3 +11,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: auto;
   }
 }
+
+.mat-mdc-dialog-component-host {
+  .mat-mdc-dialog-title {
+    align-self: center;
+  }
+
+  .mat-mdc-dialog-actions {
+    place-content: space-between;
+  }
+}
