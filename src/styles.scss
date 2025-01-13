@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.filter-panel {
+  mat-form-field {
+    padding: 5px 0;
+    width: 33%;
+    margin-left: auto;
+  }
+}
+
+.mat-mdc-dialog-component-host {
+  .mat-mdc-dialog-title {
+    align-self: center;
+  }
+
+  .mat-mdc-dialog-actions {
+    place-content: space-between;
+  }
+}
+
+.offboard-form-container {
+  .row-container {
+    mat-form-field {
+      flex: 100%;
+    }
+  }
+}

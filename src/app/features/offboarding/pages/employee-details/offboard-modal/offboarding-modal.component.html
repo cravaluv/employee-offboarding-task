@@ -1,0 +1,116 @@
+<h2 mat-dialog-title>Offboard</h2>
+<form [formGroup]="offboardingForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <section class="offboard-form-container">
+      <!-- Receiver Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Receiver</mat-label>
+        <input matInput formControlName="receiver" />
+        @if(offboardingForm.controls['receiver'].hasError('required')){
+          <mat-error>
+            Receiver is required.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Email Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        @if(offboardingForm.controls['email'].hasError('required')) {
+          <mat-error>
+            Email is required.
+          </mat-error>
+        }
+
+        @if(offboardingForm.controls['email'].hasError('email')) {
+          <mat-error>
+            Invalid email format.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Phone Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput type="tel" formControlName="phone" />
+        @if(offboardingForm.controls['phone'].hasError('required')) {
+          <mat-error>
+            Phone is required.
+          </mat-error>
+        }
+        @if(offboardingForm.controls['phone'].hasError('pattern')) {
+        <mat-error>
+          Phone must be 10 digits.
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Street Line Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Street Line</mat-label>
+        <input matInput formControlName="streetLine" />
+        @if(offboardingForm.controls['streetLine'].hasError('required')) {
+          <mat-error>
+            Street line is required.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="row-container">
+        <!-- City Field -->
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" />
+          @if(offboardingForm.controls['city'].hasError('required')) {
+            <mat-error>
+              City is required.
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Postal Code Field -->
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName="postalCode" />
+          @if(offboardingForm.controls['postalCode'].hasError('required')) {
+            <mat-error>
+              Postal code is required.
+            </mat-error>
+          }
+          @if(offboardingForm.controls['postalCode'].hasError('pattern')) {
+            <mat-error>
+              Postal code must be in the format XX-XXX.
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Country Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" />
+        @if(offboardingForm.controls['country'].hasError('required')) {
+          <mat-error>
+            Country is required.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Notes Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+        @if(offboardingForm.controls['notes'].hasError('required')) {
+          <mat-error>
+            Notes are required.
+          </mat-error>
+        }
+      </mat-form-field>
+    </section>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button type="submit">CONFIRM</button>
+  </mat-dialog-actions>
+</form>

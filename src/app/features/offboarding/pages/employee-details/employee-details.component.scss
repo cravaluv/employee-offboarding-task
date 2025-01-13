@@ -1,0 +1,60 @@
+.back-container{
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-weight: normal;
+  }
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+
+  .column {
+    flex: 1;
+    padding: 10px;
+
+    .row {
+      display: flex;
+      margin-bottom: 10px;
+
+      .label {
+        width: 120px;
+        font-weight: bold;
+      }
+
+      .value {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.equipment-container {
+  .list-header {
+    margin-top: 5px;
+    background-color: lightgray;
+    border: 2px solid lightgray; /* Thickness and color of the border */
+    border-radius: 5px; /* Makes the border round */
+    //height: 30px;
+    //padding: 0 10px;
+    //align-content: center;
+  }
+}

@@ -1,0 +1,54 @@
+<section class="back-container" (click)="goBack()">
+  <mat-icon>arrow_back_ios</mat-icon>
+  <p>Back</p>
+</section>
+
+<section class="details-header">
+  <h2>
+    {{ employee?.name }}
+  </h2>
+
+  @if(employee?.status === employeeStatusEnum.ACTIVE) {
+    <button mat-flat-button (click)="offboard()">Offboard</button>
+  }
+</section>
+
+<section>
+  <h5>Employee Details</h5>
+  <mat-divider></mat-divider>
+  <div class="details-container">
+    <div class="column">
+      <div class="row">
+        <span class="label">Full Name</span>
+        <span class="value">{{ employee?.name }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Department</span>
+        <span class="value">{{ employee?.department }}</span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="row">
+        <span class="label">Email</span>
+        <span class="value">{{ employee?.email }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="equipment-container">
+  <h5>Equipment</h5>
+  <mat-divider></mat-divider>
+  <div>
+    <mat-list>
+      <mat-list-item class="list-header">Item</mat-list-item>
+
+      @for (equipment of employee?.equipments; track equipment; let last = $last) {
+        <mat-list-item>{{ equipment.name }}</mat-list-item>
+        @if(!last) {
+          <mat-divider></mat-divider>
+        }
+      }
+    </mat-list>
+  </div>
+</section>
