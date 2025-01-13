@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import {OffboardingService} from '../../offboarding.service';
 import {Employee} from '../../offboarding.model';
-import {JoinByPropertyPipe} from '../../../../shared/pipes/join.pipe';
+import {JoinByPropertyPipe} from '../../../../shared/pipes/join-by-property.pipe';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {Router} from '@angular/router';
@@ -28,7 +28,6 @@ export class EmployeesListComponent implements OnInit {
       this.employees = employees;
       this.applyFilter();
     });
-    this.offboardingService.fetchEmployees();
   }
 
   applyFilter(event?: Event) {

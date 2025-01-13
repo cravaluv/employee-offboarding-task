@@ -1,4 +1,4 @@
-import { JoinByPropertyPipe } from './join.pipe';
+import { JoinByPropertyPipe } from './join-by-property.pipe';
 
 describe('joinByPropertyPipe', () => {
   let pipe: JoinByPropertyPipe;

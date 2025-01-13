@@ -8,7 +8,9 @@
     {{ employee?.name }}
   </h2>
 
-  <button mat-flat-button (click)="offboard()">Offboard</button>
+  @if(employee?.status === employeeStatusEnum.ACTIVE) {
+    <button mat-flat-button (click)="offboard()">Offboard</button>
+  }
 </section>
 
 <section>

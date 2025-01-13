@@ -1,4 +1,3 @@
-import {OffboardingService} from './offboarding.service';
 import {Route} from '@angular/router';
 import {EmployeeDetailsComponent} from './pages/employee-details/employee-details.component';
 import {OffboardingComponent} from './offboarding.component';
@@ -7,9 +6,6 @@ import {EmployeesListComponent} from './pages/employees-list/employees-list.comp
 export const OffboardingRoutes: Route[] = [
   {
     path: '',
-    providers: [
-      OffboardingService,
-    ],
     component: OffboardingComponent,
     children: [
       { path: 'employee-list', component: EmployeesListComponent },

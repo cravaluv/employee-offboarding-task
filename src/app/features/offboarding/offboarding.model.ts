@@ -8,11 +8,22 @@ export interface Employee {
 }
 
 export enum EmployeeStatus {
-  Active = 'Active',
-  Offboarded = 'Offboarded',
+  ACTIVE = 'Active',
+  OFFBOARDED = 'Offboarded',
 }
 
 export interface Equipment {
   id: string;
   name: string;
+}
+
+export interface OffboardEmployee {
+  receiver: string;
+  email: string;
+  phone: string;
+  streetLine: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  notes: string;
 }

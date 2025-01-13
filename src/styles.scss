@@ -21,3 +21,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     place-content: space-between;
   }
 }
+
+.offboard-form-container {
+  .row-container {
+    mat-form-field {
+      flex: 100%;
+    }
+  }
+}

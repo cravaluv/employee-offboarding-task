@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeesListComponent } from './employees-list.component';
 import {Employee} from '../../offboarding.model';
 import {OffboardingService} from '../../offboarding.service';
+import {HttpClientModule} from '@angular/common/http';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 describe('EmployeesListComponent', () => {
   let component: EmployeesListComponent;
@@ -10,8 +12,11 @@ describe('EmployeesListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EmployeesListComponent],
-      providers: [OffboardingService]
+      imports: [HttpClientModule, EmployeesListComponent],
+      providers: [
+        OffboardingService,
+        provideAnimations()
+      ]
     })
     .compileComponents();
 

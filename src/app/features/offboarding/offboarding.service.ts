@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Employee, EmployeeStatus} from './offboarding.model';
-import {BehaviorSubject, Observable, tap} from 'rxjs';
+import {BehaviorSubject, map, Observable, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {formatStatus} from '../../shared/utils/string.utils';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,17 @@ export class OffboardingService {
   fetchEmployees(): void {
     this.http.get<Employee[]>('/api/employees')
       .pipe(
+        map(employees =>
+          employees.map(employee => ({
+            ...employee,
+            status: formatStatus(employee.status),
+          }))
+        ),
         tap(employees => {
-          console.log('Fetched employees:', employees); // Log the fetched employees
           this.employeesSubject.next(employees);
         })
       )
       .subscribe({
-        next: () => console.log('Employees updated successfully'),
         error: (err) => console.error('Error fetching employees:', err)
       });
   }
@@ -38,7 +43,7 @@ export class OffboardingService {
           const employees = this.employeesSubject.getValue();
           const index = employees.findIndex(emp => emp.id === id);
           if (index !== -1) {
-            employees[index].status = EmployeeStatus.Offboarded;
+            employees[index].status = EmployeeStatus.OFFBOARDED;
             this.employeesSubject.next([...employees]);
           }
         })
