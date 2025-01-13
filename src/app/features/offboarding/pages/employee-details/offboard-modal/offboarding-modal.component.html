@@ -111,6 +111,6 @@
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>CANCEL</button>
-    <button mat-button type="submit">CONFIRM</button>
+    <button mat-button type="submit" [disabled]="offboardingForm.invalid">CONFIRM</button>
   </mat-dialog-actions>
 </form>

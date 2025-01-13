@@ -10,12 +10,13 @@ import {formatStatus} from '../../shared/utils/string.utils';
 export class OffboardingService {
 
   private employeesSubject = new BehaviorSubject<Employee[]>([]);
+  private apiURL = '';
   employees$ = this.employeesSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
   fetchEmployees(): void {
-    this.http.get<Employee[]>('/api/employees')
+    this.http.get<Employee[]>(`${this.apiURL}/employees`)
       .pipe(
         map(employees =>
           employees.map(employee => ({
@@ -33,11 +34,11 @@ export class OffboardingService {
   }
 
   fetchEmployeeDetails(id: number): Observable<Employee> {
-    return this.http.get<Employee>(`/api/employees/${id}`);
+    return this.http.get<Employee>(`${this.apiURL}/employees/${id}`);
   }
 
   offboardEmployee(id: number, body: any): Observable<Employee> {
-    return this.http.post<Employee>(`/api/employees/${id}/offboard`, body)
+    return this.http.post<Employee>(`${this.apiURL}/employees/${id}/offboard`, body)
       .pipe(
         tap(() => {
           const employees = this.employeesSubject.getValue();
