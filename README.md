@@ -41,8 +41,9 @@ The Offboarding Application is designed to manage the offboarding process of emp
 3. **Run the application:**
 
    ```bash
-   npm run start:proxy
-This command will start the Angular application and configure it to use a proxy for API requests.
+   ng serve
+   
+Remember to put the API URL in the offboarding.service.ts file.
 
 4. **Running Tests:**
 
